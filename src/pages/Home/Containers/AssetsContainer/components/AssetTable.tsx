@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Progress, Space, Table, Tag } from 'antd';
+import { Button, Popconfirm, Progress, Space, Table, Tag } from 'antd';
 // eslint-disable-next-line import/no-duplicates
 import { formatRelative } from 'date-fns';
 // eslint-disable-next-line import/no-duplicates
@@ -18,8 +18,6 @@ const AssetTable = ({
     assets,
     onHandleSelectedAsset,
 }: IAssetTableProps): JSX.Element => {
-    const [deleteLoading, setDeleteLoading] = useState(false);
-
     const HeathColor = (value: number): string => {
         if (value < 50) {
             return '#f5222d';
@@ -31,9 +29,7 @@ const AssetTable = ({
     };
 
     const onHandleDeleteModel = async (id: number) => {
-        setDeleteLoading(true);
         await api.delete(`/assets/${id}`);
-        setDeleteLoading(false);
     };
     const columns = [
         {
@@ -101,9 +97,14 @@ const AssetTable = ({
                     <Button onClick={() => onHandleSelectedAsset(record)}>
                         Ver
                     </Button>
-                    <Button onClick={() => onHandleDeleteModel(record.id)}>
-                        Deletar
-                    </Button>
+                    <Popconfirm
+                        title="Tem certeza que deseja cancelar esse ativo?"
+                        okText="Sim"
+                        cancelText="Cancelar"
+                        onConfirm={() => onHandleDeleteModel(record.id)}
+                    >
+                        <Button>Deletar</Button>
+                    </Popconfirm>
                 </Space>
             ),
         },

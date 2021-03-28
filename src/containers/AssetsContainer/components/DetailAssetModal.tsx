@@ -1,7 +1,9 @@
-import { Modal, Form, Image, Input } from 'antd';
+import { Modal, Form, Image, Input, Select } from 'antd';
 import React, { useState } from 'react';
 import api from '../../../services/api';
 import IAsset from '../../../types/Asset';
+import ICompany from '../../../types/Company';
+import IUnit from '../../../types/Unit';
 
 interface IDetailAssetModalProps {
     selectedAsset: IAsset;
@@ -53,13 +55,6 @@ const DetailAssetModal = ({
                     onFinish={onFinish}
                     form={form}
                     onFinishFailed={onFinishFailed}
-                    initialValues={{
-                        id: selectedAsset?.id || '',
-                        model: selectedAsset?.model || '',
-                        name: selectedAsset?.name || '',
-                        unitId: selectedAsset?.unitId || '',
-                        companyId: selectedAsset?.companyId || '',
-                    }}
                     preserve={false}
                 >
                     <Form.Item label="ID" name="id">

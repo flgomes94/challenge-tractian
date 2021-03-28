@@ -5,11 +5,13 @@ import * as Highcharts from 'highcharts';
 import _ from 'lodash';
 import IAsset from '../../../types/Asset';
 
-interface IStatisticsGraphProps {
+interface IAssetsStatisticsGraphProps {
     assets: IAsset[];
 }
 
-const StatisticsGraph = ({ assets }: IStatisticsGraphProps): JSX.Element => {
+const AssetsStatisticsGraph = ({
+    assets,
+}: IAssetsStatisticsGraphProps): JSX.Element => {
     const assetsByStatus = (status: 'inAlert' | 'inOperation' | 'inDowntime') =>
         assets?.length
             ? _.filter(assets, (asset) => asset.status === status).length
@@ -73,4 +75,4 @@ const StatisticsGraph = ({ assets }: IStatisticsGraphProps): JSX.Element => {
     );
 };
 
-export default StatisticsGraph;
+export default AssetsStatisticsGraph;

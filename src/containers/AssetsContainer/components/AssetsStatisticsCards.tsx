@@ -5,7 +5,7 @@ import {
     InfoCircleOutlined,
     ReloadOutlined,
 } from '@ant-design/icons';
-import { Card, Col, Row, Statistic, Tooltip } from 'antd';
+import { Card, Col, Statistic, Tooltip } from 'antd';
 import _ from 'lodash';
 import React from 'react';
 import IAsset from '../../../types/Asset';
@@ -14,7 +14,9 @@ interface IStatisticsCardProps {
     assets: IAsset[];
 }
 
-const StatisticsCards = ({ assets }: IStatisticsCardProps): JSX.Element => {
+const AssetsStatisticsCards = ({
+    assets,
+}: IStatisticsCardProps): JSX.Element => {
     const healthPercentageByValue = (value: number) =>
         assets?.length
             ? (_.filter(assets, (asset) => asset.healthscore > value).length /
@@ -110,4 +112,4 @@ const StatisticsCards = ({ assets }: IStatisticsCardProps): JSX.Element => {
     );
 };
 
-export default StatisticsCards;
+export default AssetsStatisticsCards;

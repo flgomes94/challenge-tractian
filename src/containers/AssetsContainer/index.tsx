@@ -1,13 +1,13 @@
-import { Row, Form } from 'antd';
+import { Row } from 'antd';
 
 import React, { useEffect, useState } from 'react';
 
 import api from '../../services/api';
 import IAsset from '../../types/Asset';
-import AssetTable from './components/AssetTable';
+import AssetsTable from './components/AssetsTable';
 import DetailAssetModal from './components/DetailAssetModal';
-import StatisticsCards from './components/StatisticsCards';
-import StatisticsGraph from './components/StatisticsGraph';
+import AssetsStatisticsCards from './components/AssetsStatisticsCards';
+import AssetsStatisticsGraph from './components/AssetsStatisticsGraph';
 
 const AssetsPage: React.FC = () => {
     const [assets, setAssets] = useState<IAsset[]>();
@@ -39,18 +39,18 @@ const AssetsPage: React.FC = () => {
             )}
             {assets && (
                 <Row gutter={16}>
-                    <StatisticsGraph assets={assets} />
+                    <AssetsStatisticsGraph assets={assets} />
                 </Row>
             )}
             {assets && (
                 <Row gutter={16}>
-                    <StatisticsCards assets={assets} />
+                    <AssetsStatisticsCards assets={assets} />
                 </Row>
             )}
 
             <Row gutter={16} />
             {assets && (
-                <AssetTable
+                <AssetsTable
                     assets={assets}
                     onHandleSelectedAsset={onHandleSelectedAsset}
                 />

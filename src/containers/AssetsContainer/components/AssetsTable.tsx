@@ -9,15 +9,15 @@ import Status from '../../../helpers/Status';
 import IAsset from '../../../types/Asset';
 import api from '../../../services/api';
 
-interface IAssetTableProps {
+interface IAssetsTableProps {
     assets: IAsset[];
     onHandleSelectedAsset: (asset: IAsset) => void;
 }
 
-const AssetTable = ({
+const AssetsTable = ({
     assets,
     onHandleSelectedAsset,
-}: IAssetTableProps): JSX.Element => {
+}: IAssetsTableProps): JSX.Element => {
     const HeathColor = (value: number): string => {
         if (value < 50) {
             return '#f5222d';
@@ -121,4 +121,4 @@ const AssetTable = ({
     );
 };
 
-export default AssetTable;
+export default AssetsTable;

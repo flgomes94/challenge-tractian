@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { useState } from 'react';
 import { Layout, Menu } from 'antd';
 import {
     SettingOutlined,
@@ -6,10 +6,10 @@ import {
     ExperimentOutlined,
     AppstoreOutlined,
 } from '@ant-design/icons';
-import { BrowserRouter, Link, Route, Router } from 'react-router-dom';
-import AssetsPage from '../AssetsPage';
+import { BrowserRouter, Link, Route } from 'react-router-dom';
+import AssetsPage from './Containers/AssetsContainer';
 
-const { Content, Footer, Sider } = Layout;
+const { Content, Sider } = Layout;
 
 const HomePage: React.FC = () => {
     const [collapsed, setCollapsed] = useState(false);

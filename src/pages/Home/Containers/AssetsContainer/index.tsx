@@ -1,5 +1,4 @@
 import { Row, Form } from 'antd';
-import Modal from 'antd/lib/modal/Modal';
 
 import React, { useEffect, useState } from 'react';
 

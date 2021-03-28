@@ -1,29 +1,29 @@
-import { Modal, Form, Image, Input } from 'antd';
+import { Modal, Form, Input } from 'antd';
 import React, { useState } from 'react';
 import api from '../../../../../services/api';
-import IAsset from '../../../../../types/Asset';
+import IUnit from '../../../../../types/Unit';
 
-interface IDetailAssetModalProps {
-    selectedAsset: IAsset;
+interface IDetailUnitModalProps {
+    selectedUnit: IUnit;
     showSeeModal: boolean;
     setShowSeeModal: () => void;
 }
 
-const DetailAssetModal = ({
-    selectedAsset,
+const DetailUnitModal = ({
+    selectedUnit,
     showSeeModal,
     setShowSeeModal,
-}: IDetailAssetModalProps): JSX.Element => {
+}: IDetailUnitModalProps): JSX.Element => {
     const [form] = Form.useForm();
     const [confirmLoading, setConfirmLoading] = useState(false);
     React.useEffect(() => {
-        form.setFieldsValue(selectedAsset);
-    }, [form, selectedAsset]);
+        form.setFieldsValue(selectedUnit);
+    }, [form, selectedUnit]);
 
     const onHandleOkModal = async () => {
-        const { id, name, model, companyId, unitId } = form.getFieldsValue();
+        const { id, name, companyId } = form.getFieldsValue();
         setConfirmLoading(true);
-        await api.put(`/assets/${id}`, { name, model, companyId, unitId });
+        await api.put(`/Units/${id}`, { name, companyId });
         setConfirmLoading(false);
         setShowSeeModal();
     };
@@ -44,34 +44,23 @@ const DetailAssetModal = ({
                 confirmLoading={confirmLoading}
                 onOk={onHandleOkModal}
                 destroyOnClose
-                forceRender
                 cancelText="Cancelar"
             >
-                <Image width="auto" src={selectedAsset?.image || ''} />
                 <Form
                     layout="vertical"
                     onFinish={onFinish}
                     form={form}
                     onFinishFailed={onFinishFailed}
                     initialValues={{
-                        id: selectedAsset?.id || '',
-                        model: selectedAsset?.model || '',
-                        name: selectedAsset?.name || '',
-                        unitId: selectedAsset?.unitId || '',
-                        companyId: selectedAsset?.companyId || '',
+                        id: selectedUnit?.id || '',
+                        name: selectedUnit?.name || '',
+                        companyId: selectedUnit?.companyId || '',
                     }}
-                    preserve={false}
                 >
                     <Form.Item label="ID" name="id">
                         <Input disabled />
                     </Form.Item>
-                    <Form.Item label="Modelo" name="model">
-                        <Input />
-                    </Form.Item>
                     <Form.Item label="Nome" name="name">
-                        <Input />
-                    </Form.Item>
-                    <Form.Item label="Unidade" name="unitId">
                         <Input />
                     </Form.Item>
                     <Form.Item label="Empresa" name="companyId">
@@ -83,4 +72,4 @@ const DetailAssetModal = ({
     );
 };
 
-export default DetailAssetModal;
+export default DetailUnitModal;

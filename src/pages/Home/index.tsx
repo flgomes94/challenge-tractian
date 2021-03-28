@@ -8,6 +8,9 @@ import {
 } from '@ant-design/icons';
 import { BrowserRouter, Link, Route } from 'react-router-dom';
 import AssetsPage from './Containers/AssetsContainer';
+import UsersPage from './Containers/UsersContainer';
+import UnitsPage from './Containers/UnitsContainer';
+import CompaniesPage from './Containers/CompanyContainer';
 
 const { Content, Sider } = Layout;
 
@@ -47,10 +50,14 @@ const HomePage: React.FC = () => {
                         display: 'flex',
                         justifyContent: 'space-around',
                         flexDirection: 'column',
-                        margin: 10,
+                        margin: 20,
                     }}
                 >
                     <Route exact path="/assets" component={AssetsPage} />
+                    <Route exact path="/" component={AssetsPage} />
+                    <Route exact path="/users" component={UsersPage} />
+                    <Route exact path="/units" component={UnitsPage} />
+                    <Route exact path="/companies" component={CompaniesPage} />
                 </Content>
             </Layout>
         </BrowserRouter>

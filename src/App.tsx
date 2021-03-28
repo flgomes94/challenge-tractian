@@ -1,14 +1,13 @@
 import React from 'react';
+import 'antd/dist/antd.css';
+import HomePage from './pages/HomePage';
 
-import GlobalStyle from './styles/global';
-
-function App() {
+const App: React.FC = () => {
     return (
         <>
-            <h1> Hello World</h1>
-            <GlobalStyle />
+            <HomePage />
         </>
     );
-}
+};
 
 export default App;

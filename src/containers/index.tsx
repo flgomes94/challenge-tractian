@@ -7,10 +7,10 @@ import {
     AppstoreOutlined,
 } from '@ant-design/icons';
 import { BrowserRouter, Link, Route } from 'react-router-dom';
-import AssetsPage from './Containers/AssetsContainer';
-import UsersPage from './Containers/UsersContainer';
-import UnitsPage from './Containers/UnitsContainer';
-import CompaniesPage from './Containers/CompanyContainer';
+import AssetsPage from './AssetsContainer';
+import UsersPage from './UsersContainer';
+import UnitsPage from './UnitsContainer';
+import CompaniesPage from './CompaniesContainer';
 
 const { Content, Sider } = Layout;
 

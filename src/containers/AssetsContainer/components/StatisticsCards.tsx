@@ -8,7 +8,7 @@ import {
 import { Card, Col, Row, Statistic, Tooltip } from 'antd';
 import _ from 'lodash';
 import React from 'react';
-import IAsset from '../../../../../types/Asset';
+import IAsset from '../../../types/Asset';
 
 interface IStatisticsCardProps {
     assets: IAsset[];

@@ -1,7 +1,7 @@
 import { Modal, Form, Input } from 'antd';
 import React, { useState } from 'react';
-import api from '../../../../../services/api';
-import ICompany from '../../../../../types/Company';
+import api from '../../../services/api';
+import ICompany from '../../../types/Company';
 
 interface IDetailCompanyModalProps {
     selectedCompany: ICompany;

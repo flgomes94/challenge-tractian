@@ -1,29 +1,29 @@
 import { Modal, Form, Input } from 'antd';
 import React, { useState } from 'react';
-import api from '../../../../../services/api';
-import IUser from '../../../../../types/User';
+import api from '../../../services/api';
+import IUnit from '../../../types/Unit';
 
-interface IDetailUserModalProps {
-    selectedUser: IUser;
+interface IDetailUnitModalProps {
+    selectedUnit: IUnit;
     showSeeModal: boolean;
     setShowSeeModal: () => void;
 }
 
-const DetailUserModal = ({
-    selectedUser,
+const DetailUnitModal = ({
+    selectedUnit,
     showSeeModal,
     setShowSeeModal,
-}: IDetailUserModalProps): JSX.Element => {
+}: IDetailUnitModalProps): JSX.Element => {
     const [form] = Form.useForm();
     const [confirmLoading, setConfirmLoading] = useState(false);
     React.useEffect(() => {
-        form.setFieldsValue(selectedUser);
-    }, [form, selectedUser]);
+        form.setFieldsValue(selectedUnit);
+    }, [form, selectedUnit]);
 
     const onHandleOkModal = async () => {
-        const { id, name, email, companyId, unitId } = form.getFieldsValue();
+        const { id, name, companyId } = form.getFieldsValue();
         setConfirmLoading(true);
-        await api.put(`/users/${id}`, { name, email, companyId, unitId });
+        await api.put(`/Units/${id}`, { name, companyId });
         setConfirmLoading(false);
         setShowSeeModal();
     };
@@ -52,23 +52,15 @@ const DetailUserModal = ({
                     form={form}
                     onFinishFailed={onFinishFailed}
                     initialValues={{
-                        id: selectedUser?.id || '',
-                        name: selectedUser?.name || '',
-                        email: selectedUser?.email || '',
-                        unitId: selectedUser?.unitId || '',
-                        companyId: selectedUser?.companyId || '',
+                        id: selectedUnit?.id || '',
+                        name: selectedUnit?.name || '',
+                        companyId: selectedUnit?.companyId || '',
                     }}
                 >
                     <Form.Item label="ID" name="id">
                         <Input disabled />
                     </Form.Item>
                     <Form.Item label="Nome" name="name">
-                        <Input />
-                    </Form.Item>
-                    <Form.Item label="Email" name="email">
-                        <Input />
-                    </Form.Item>
-                    <Form.Item label="Unidade" name="unitId">
                         <Input />
                     </Form.Item>
                     <Form.Item label="Empresa" name="companyId">
@@ -80,4 +72,4 @@ const DetailUserModal = ({
     );
 };
 
-export default DetailUserModal;
+export default DetailUnitModal;

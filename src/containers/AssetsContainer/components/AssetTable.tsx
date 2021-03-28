@@ -5,9 +5,9 @@ import { formatRelative } from 'date-fns';
 // eslint-disable-next-line import/no-duplicates
 import { ptBR } from 'date-fns/locale';
 
-import Status from '../../../../../helpers/Status';
-import IAsset from '../../../../../types/Asset';
-import api from '../../../../../services/api';
+import Status from '../../../helpers/Status';
+import IAsset from '../../../types/Asset';
+import api from '../../../services/api';
 
 interface IAssetTableProps {
     assets: IAsset[];

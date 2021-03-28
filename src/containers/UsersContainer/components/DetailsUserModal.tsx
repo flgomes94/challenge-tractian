@@ -1,29 +1,29 @@
-import { Modal, Form, Image, Input } from 'antd';
+import { Modal, Form, Input } from 'antd';
 import React, { useState } from 'react';
-import api from '../../../../../services/api';
-import IAsset from '../../../../../types/Asset';
+import api from '../../../services/api';
+import IUser from '../../../types/User';
 
-interface IDetailAssetModalProps {
-    selectedAsset: IAsset;
+interface IDetailUserModalProps {
+    selectedUser: IUser;
     showSeeModal: boolean;
     setShowSeeModal: () => void;
 }
 
-const DetailAssetModal = ({
-    selectedAsset,
+const DetailUserModal = ({
+    selectedUser,
     showSeeModal,
     setShowSeeModal,
-}: IDetailAssetModalProps): JSX.Element => {
+}: IDetailUserModalProps): JSX.Element => {
     const [form] = Form.useForm();
     const [confirmLoading, setConfirmLoading] = useState(false);
     React.useEffect(() => {
-        form.setFieldsValue(selectedAsset);
-    }, [form, selectedAsset]);
+        form.setFieldsValue(selectedUser);
+    }, [form, selectedUser]);
 
     const onHandleOkModal = async () => {
-        const { id, name, model, companyId, unitId } = form.getFieldsValue();
+        const { id, name, email, companyId, unitId } = form.getFieldsValue();
         setConfirmLoading(true);
-        await api.put(`/assets/${id}`, { name, model, companyId, unitId });
+        await api.put(`/users/${id}`, { name, email, companyId, unitId });
         setConfirmLoading(false);
         setShowSeeModal();
     };
@@ -44,31 +44,28 @@ const DetailAssetModal = ({
                 confirmLoading={confirmLoading}
                 onOk={onHandleOkModal}
                 destroyOnClose
-                forceRender
                 cancelText="Cancelar"
             >
-                <Image width="auto" src={selectedAsset?.image || ''} />
                 <Form
                     layout="vertical"
                     onFinish={onFinish}
                     form={form}
                     onFinishFailed={onFinishFailed}
                     initialValues={{
-                        id: selectedAsset?.id || '',
-                        model: selectedAsset?.model || '',
-                        name: selectedAsset?.name || '',
-                        unitId: selectedAsset?.unitId || '',
-                        companyId: selectedAsset?.companyId || '',
+                        id: selectedUser?.id || '',
+                        name: selectedUser?.name || '',
+                        email: selectedUser?.email || '',
+                        unitId: selectedUser?.unitId || '',
+                        companyId: selectedUser?.companyId || '',
                     }}
-                    preserve={false}
                 >
                     <Form.Item label="ID" name="id">
                         <Input disabled />
                     </Form.Item>
-                    <Form.Item label="Modelo" name="model">
+                    <Form.Item label="Nome" name="name">
                         <Input />
                     </Form.Item>
-                    <Form.Item label="Nome" name="name">
+                    <Form.Item label="Email" name="email">
                         <Input />
                     </Form.Item>
                     <Form.Item label="Unidade" name="unitId">
@@ -83,4 +80,4 @@ const DetailAssetModal = ({
     );
 };
 
-export default DetailAssetModal;
+export default DetailUserModal;

@@ -3,7 +3,7 @@ import HighchartsReact from 'highcharts-react-official';
 import React from 'react';
 import * as Highcharts from 'highcharts';
 import _ from 'lodash';
-import IAsset from '../../../../../types/Asset';
+import IAsset from '../../../types/Asset';
 
 interface IStatisticsGraphProps {
     assets: IAsset[];

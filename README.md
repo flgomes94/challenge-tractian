@@ -20,16 +20,16 @@ Aplicação para consulta de ativos, usuários, unidades e empresas utilizando a
 
 O projeto foi feito com as seguintes tecnologias:
 
--  [ReactJS](https://pt-br.reactjs.org/)
--  [Ant Desgin](https://ant.design/)
--  [React Router Dom](https://reactrouter.com/)
--  [Axios](https://github.com/axios/axios)
--  [HighCharts](https://www.highcharts.com/)
--  [Lodash](https://lodash.com/)
+* [ReactJS](https://pt-br.reactjs.org/)
+* [Ant Desgin](https://ant.design/)
+* [React Router Dom](https://reactrouter.com/)
+* [Axios](https://github.com/axios/axios)
+* [HighCharts](https://www.highcharts.com/)
+* [Lodash](https://lodash.com/)
 
 ## :earth_americas: Acessando a aplicação (produção)
--  [Heroku](https://tractian-frontend.herokuapp.com/)
--  [Netlify](https://tractian-frontend.netlify.app)
+* [Heroku](https://tractian-frontend.herokuapp.com/)
+* [Netlify](https://tractian-frontend.netlify.app)
 
 ## :house: Acessando a aplicação (local)
 

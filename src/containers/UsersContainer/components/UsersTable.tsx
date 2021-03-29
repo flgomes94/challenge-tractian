@@ -12,7 +12,7 @@ const UsersTable = ({
     onHandleSelectedUser,
     onHandleDeleteModel,
     users,
-}: IUsersTableProps) => {
+}: IUsersTableProps): JSX.Element => {
     const columns = [
         {
             title: 'Id',

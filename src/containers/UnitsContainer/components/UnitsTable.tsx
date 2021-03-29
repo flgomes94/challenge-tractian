@@ -12,7 +12,7 @@ const UnitsTable = ({
     onHandleSelectedUnit,
     onHandleDeleteModel,
     units,
-}: IUnitsTableProps) => {
+}: IUnitsTableProps): JSX.Element => {
     const columns = [
         {
             title: 'Id',

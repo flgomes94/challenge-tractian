@@ -1,46 +1,56 @@
-# Getting Started with Create React App
+<div align="center" style="margin: 20px;">
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![GitHub last commit](https://img.shields.io/github/last-commit/flgomes94/challenge-tractian?color=green&style=flat-square)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/6b2782c86c3b4e01ac18157235bfc017)](https://www.codacy.com/gh/flgomes94/challenge-tractian/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=flgomes94/challenge-tractian&amp;utm_campaign=Badge_Grade)
+![GitHub top language](https://img.shields.io/github/languages/top/flgomes94/challenge-tractian?style=flat-square)
 
-## Available Scripts
 
-In the project directory, you can run:
+<p align="center" >
+  <a href="#fire-prévia-da-aplicacao"> 🔥 Prévia da Aplicação</a> |
+  <a href="#computer-tecnologias-usadas"> 🖥️ Tecnologias Usadas</a> |
+  <a href="#earth_americas-acessando-a-aplicação-(produção)"> 🌎 Acessando a aplicação (produção)</a> |
+  <a href="#house-acessando-a-aplicação-(local)"> 🏡 Acessando a aplicação (local) </a>
+</p>
 
-### `yarn start`
+</div>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## ⚙️ O projeto
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Aplicação para consulta de ativos, usuários, unidades e empresas utilizando ant design e react.
 
-### `yarn test`
+## :fire: Prévia da Aplicação
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<div align="center">
+<img src="https://media.giphy.com/media/KQOuaHYQP4LfyATH3a/giphy.gif" alt="Aplicação"/>
+</div>
 
-### `yarn build`
+### :computer: Tecnologias Usadas
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+O projeto foi feito com as seguintes tecnologias:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- [ReactJS](https://pt-br.reactjs.org/)
+- [Ant Desgin](https://ant.design/)
+- [React Router Dom](https://reactrouter.com/)
+- [Axios](https://github.com/axios/axios)
+- [HighCharts](https://www.highcharts.com/)
+- [Lodash](https://lodash.com/)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## :earth_americas: Acessando a aplicação (produção)
+- [Heroku](https://tractian-frontend.herokuapp.com/)
+- [Netlify](https://tractian-frontend.netlify.app)
 
-### `yarn eject`
+## :house: Acessando a aplicação (local)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```sh
+$ git clone https://github.com/flgomes94/challenge-tractian
+$ cd challenge-tractian
+$ yarn
+$ yarn install
+$ yarn start
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### :memo: Licença
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+MIT. Veja o arquivo [LICENSE](LICENSE.md) para saber mais detalhes.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+<p align="center" style="margin-top: 20px; border-top: 1px solid #aaa; padding-top: 20px;">Feito com 💪 by <strong> Fábio Lopes</strong> </p>

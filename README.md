@@ -4,14 +4,6 @@
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/6b2782c86c3b4e01ac18157235bfc017)](https://www.codacy.com/gh/flgomes94/challenge-tractian/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=flgomes94/challenge-tractian&amp;utm_campaign=Badge_Grade)
 ![GitHub top language](https://img.shields.io/github/languages/top/flgomes94/challenge-tractian?style=flat-square)
 
-
-<p align="center" >
-  <a href="#fire-prévia-da-aplicacao"> 🔥 Prévia da Aplicação</a> |
-  <a href="#computer-tecnologias-usadas"> 🖥️ Tecnologias Usadas</a> |
-  <a href="#earth_americas-acessando-a-aplicação-(produção)"> 🌎 Acessando a aplicação (produção)</a> |
-  <a href="#house-acessando-a-aplicação-(local)"> 🏡 Acessando a aplicação (local) </a>
-</p>
-
 </div>
 
 ## ⚙️ O projeto

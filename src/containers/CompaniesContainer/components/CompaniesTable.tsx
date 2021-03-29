@@ -12,7 +12,7 @@ const CompaniesTable = ({
     onHandleSelectedCompany,
     onHandleDeleteModel,
     companies,
-}: ICompaniesTableProps) => {
+}: ICompaniesTableProps): JSX.Element => {
     const columns = [
         {
             title: 'Id',

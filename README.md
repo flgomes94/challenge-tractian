@@ -43,6 +43,6 @@ yarn start
 
 ### :memo: Licença
 
-MIT. Veja o arquivo [LICENSE](LICENSE.md) para saber mais detalhes.
+MIT. Veja o arquivo [LICENSE](LICENSE.txt) para saber mais detalhes.
 
 <p align="center" style="margin-top: 20px; border-top: 1px solid #aaa; padding-top: 20px;">Feito com 💪 by <strong> Fábio Lopes</strong> </p>

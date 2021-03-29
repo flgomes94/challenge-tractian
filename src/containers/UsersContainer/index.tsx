@@ -5,7 +5,7 @@ import IUser from '../../types/User';
 import DetailUserModal from './components/DetailsUserModal';
 import UsersTable from './components/UsersTable';
 
-const UsersPage = (): JSX.Element => {
+const UsersPage: React.FC = () => {
     const [users, setUsers] = useState<IUser[]>();
     const [selectedUser, setSelectedUser] = useState<IUser>();
     const [showSeeModal, setShowSeeModal] = useState(false);

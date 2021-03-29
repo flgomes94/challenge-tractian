@@ -6,7 +6,7 @@ import {
     ExperimentOutlined,
     AppstoreOutlined,
 } from '@ant-design/icons';
-import { BrowserRouter, Link, Route, useParams } from 'react-router-dom';
+import { BrowserRouter, Link, Route } from 'react-router-dom';
 import AssetsPage from './AssetsContainer';
 import UsersPage from './UsersContainer';
 import UnitsPage from './UnitsContainer';

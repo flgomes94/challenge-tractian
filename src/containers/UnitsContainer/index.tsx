@@ -6,7 +6,7 @@ import IUnit from '../../types/Unit';
 import DetailUnitModal from './components/DetailsUnitModal';
 import UnitsTable from './components/UnitsTable';
 
-const UnitsPage = (): JSX.Element => {
+const UnitsPage: React.FC = () => {
     const [units, setUnits] = useState<IUnit[]>();
     const [selectedUnit, setSelectedUnit] = useState<IUnit>();
     const [showSeeModal, setShowSeeModal] = useState(false);

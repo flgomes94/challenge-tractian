@@ -6,7 +6,7 @@ import ICompany from '../../types/Company';
 import DetailsCompanyModal from './components/DetailsCompanyModal';
 import CompaniesTable from './components/CompaniesTable';
 
-const CompaniesPage = (): JSX.Element => {
+const CompaniesPage: React.FC = () => {
     const [companies, setCompanies] = useState<ICompany[]>();
     const [selectedCompany, setSelectedCompany] = useState<ICompany>();
     const [showSeeModal, setShowSeeModal] = useState(false);

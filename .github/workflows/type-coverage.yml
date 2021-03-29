@@ -1,0 +1,16 @@
+name: Typescript Coverage
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.2.0
+      - run: npm install -g global add type-coverage typescript
+      - run: type-coverage

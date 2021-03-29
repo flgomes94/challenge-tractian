@@ -1,6 +1,8 @@
-import { Modal, Form, Input } from 'antd';
-import React, { useState } from 'react';
+import { Modal, Form, Input, Select } from 'antd';
+import React, { useEffect, useState } from 'react';
 import api from '../../../services/api';
+import ICompany from '../../../types/Company';
+import IUnit from '../../../types/Unit';
 import IUser from '../../../types/User';
 
 interface IDetailUserModalProps {
@@ -16,9 +18,26 @@ const DetailUserModal = ({
 }: IDetailUserModalProps): JSX.Element => {
     const [form] = Form.useForm();
     const [confirmLoading, setConfirmLoading] = useState(false);
+
+    const [units, setUnits] = useState<IUnit[]>();
+    const [companies, setCompanies] = useState<ICompany[]>();
+
     React.useEffect(() => {
         form.setFieldsValue(selectedUser);
     }, [form, selectedUser]);
+
+    useEffect(() => {
+        async function getUnits() {
+            const newUnits = await api.get('/units');
+            setUnits(newUnits.data);
+        }
+        async function getCompanies() {
+            const newCompanies = await api.get('/companies');
+            setCompanies(newCompanies.data);
+        }
+        getUnits();
+        getCompanies();
+    }, []);
 
     const onHandleOkModal = async () => {
         const { id, name, email, companyId, unitId } = form.getFieldsValue();
@@ -69,10 +88,25 @@ const DetailUserModal = ({
                         <Input />
                     </Form.Item>
                     <Form.Item label="Unidade" name="unitId">
-                        <Input />
+                        <Select>
+                            {units?.map((unit) => (
+                                <Select.Option value={unit.id} key={unit.id}>
+                                    {`${unit.id} - ${unit.name}`}
+                                </Select.Option>
+                            ))}
+                        </Select>
                     </Form.Item>
                     <Form.Item label="Empresa" name="companyId">
-                        <Input />
+                        <Select>
+                            {companies?.map((company) => (
+                                <Select.Option
+                                    value={company.id}
+                                    key={company.id}
+                                >
+                                    {`${company.id} - ${company.name}`}
+                                </Select.Option>
+                            ))}
+                        </Select>
                     </Form.Item>
                 </Form>
             </Modal>

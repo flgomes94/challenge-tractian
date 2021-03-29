@@ -1,5 +1,5 @@
 import { Modal, Form, Image, Input, Select } from 'antd';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import api from '../../../services/api';
 import IAsset from '../../../types/Asset';
 import ICompany from '../../../types/Company';
@@ -18,9 +18,24 @@ const DetailAssetModal = ({
 }: IDetailAssetModalProps): JSX.Element => {
     const [form] = Form.useForm();
     const [confirmLoading, setConfirmLoading] = useState(false);
-    React.useEffect(() => {
+    const [units, setUnits] = useState<IUnit[]>();
+    const [companies, setCompanies] = useState<ICompany[]>();
+    useEffect(() => {
         form.setFieldsValue(selectedAsset);
     }, [form, selectedAsset]);
+
+    useEffect(() => {
+        async function getUnits() {
+            const newUnits = await api.get('/units');
+            setUnits(newUnits.data);
+        }
+        async function getCompanies() {
+            const newCompanies = await api.get('/companies');
+            setCompanies(newCompanies.data);
+        }
+        getUnits();
+        getCompanies();
+    }, []);
 
     const onHandleOkModal = async () => {
         const { id, name, model, companyId, unitId } = form.getFieldsValue();
@@ -67,10 +82,25 @@ const DetailAssetModal = ({
                         <Input />
                     </Form.Item>
                     <Form.Item label="Unidade" name="unitId">
-                        <Input />
+                        <Select>
+                            {units?.map((unit) => (
+                                <Select.Option value={unit.id} key={unit.id}>
+                                    {`${unit.id} - ${unit.name}`}
+                                </Select.Option>
+                            ))}
+                        </Select>
                     </Form.Item>
                     <Form.Item label="Empresa" name="companyId">
-                        <Input />
+                        <Select>
+                            {companies?.map((company) => (
+                                <Select.Option
+                                    value={company.id}
+                                    key={company.id}
+                                >
+                                    {`${company.id} - ${company.name}`}
+                                </Select.Option>
+                            ))}
+                        </Select>
                     </Form.Item>
                 </Form>
             </Modal>

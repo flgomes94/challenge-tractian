@@ -1,6 +1,7 @@
-import { Modal, Form, Input } from 'antd';
-import React, { useState } from 'react';
+import { Modal, Form, Input, Select } from 'antd';
+import React, { useEffect, useState } from 'react';
 import api from '../../../services/api';
+import ICompany from '../../../types/Company';
 import IUnit from '../../../types/Unit';
 
 interface IDetailUnitModalProps {
@@ -16,9 +17,19 @@ const DetailUnitModal = ({
 }: IDetailUnitModalProps): JSX.Element => {
     const [form] = Form.useForm();
     const [confirmLoading, setConfirmLoading] = useState(false);
+    const [companies, setCompanies] = useState<ICompany[]>();
+
     React.useEffect(() => {
         form.setFieldsValue(selectedUnit);
     }, [form, selectedUnit]);
+
+    useEffect(() => {
+        async function getCompanies() {
+            const newCompanies = await api.get('/companies');
+            setCompanies(newCompanies.data);
+        }
+        getCompanies();
+    }, []);
 
     const onHandleOkModal = async () => {
         const { id, name, companyId } = form.getFieldsValue();
@@ -64,7 +75,16 @@ const DetailUnitModal = ({
                         <Input />
                     </Form.Item>
                     <Form.Item label="Empresa" name="companyId">
-                        <Input />
+                        <Select>
+                            {companies?.map((company) => (
+                                <Select.Option
+                                    value={company.id}
+                                    key={company.id}
+                                >
+                                    {`${company.id} - ${company.name}`}
+                                </Select.Option>
+                            ))}
+                        </Select>
                     </Form.Item>
                 </Form>
             </Modal>

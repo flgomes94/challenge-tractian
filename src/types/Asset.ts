@@ -1,6 +1,7 @@
 export default interface IAsset {
     id: number;
     model: string;
+    sensors: string[];
     name: string;
     healthscore: number;
     image: string;

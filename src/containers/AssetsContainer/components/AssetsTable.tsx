@@ -46,6 +46,14 @@ const AssetsTable = ({
             sorter: (a: IAsset, b: IAsset) => a.model.length - b.model.length,
         },
         {
+            title: 'Sensores',
+            width: 150,
+            dataIndex: 'sensors',
+            key: 'sensors',
+            sorter: (a: IAsset, b: IAsset) =>
+                a.sensors.length - b.sensors.length,
+        },
+        {
             title: 'Nome',
             dataIndex: 'name',
             key: 'name',
@@ -66,6 +74,7 @@ const AssetsTable = ({
             title: 'Saúde',
             dataIndex: 'healthscore',
             key: 'healthscore',
+
             sorter: (a: IAsset, b: IAsset) => a.healthscore - b.healthscore,
             render: (text: number) => (
                 <Progress
@@ -77,7 +86,8 @@ const AssetsTable = ({
             ),
         },
         {
-            title: 'Última atualização',
+            title: 'Últ. Atualização',
+            width: 100,
             sorter: (a: IAsset, b: IAsset) =>
                 Number(a.metrics.lastUptimeAt) - Number(b.metrics.lastUptimeAt),
             render: (text: string, record: IAsset) => {

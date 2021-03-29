@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Col } from 'antd';
+import { Col, message } from 'antd';
 import api from '../../services/api';
 
 import IUnit from '../../types/Unit';
@@ -12,8 +12,11 @@ const UnitsPage = (): JSX.Element => {
     const [showSeeModal, setShowSeeModal] = useState(false);
     useEffect(() => {
         async function getUnits() {
-            const newUnits = await api.get('/units');
-            setUnits(newUnits.data);
+            const response = await api.get('/units');
+            if (response.status !== 200) {
+                message.error(response.statusText);
+            }
+            setUnits(response.data);
         }
         getUnits();
     }, []);
@@ -23,7 +26,10 @@ const UnitsPage = (): JSX.Element => {
     };
 
     const onHandleDeleteModel = async (id: number) => {
-        await api.delete(`/units/${id}`);
+        const response = await api.delete(`/units/${id}`);
+        if (response.status !== 200) {
+            message.error(response.statusText);
+        }
     };
 
     return (

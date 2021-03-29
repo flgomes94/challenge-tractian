@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Col } from 'antd';
+import { Col, message } from 'antd';
 import api from '../../services/api';
 import IUser from '../../types/User';
 import DetailUserModal from './components/DetailsUserModal';
@@ -11,8 +11,11 @@ const UsersPage = (): JSX.Element => {
     const [showSeeModal, setShowSeeModal] = useState(false);
     useEffect(() => {
         async function getUsers() {
-            const newUsers = await api.get('/users');
-            setUsers(newUsers.data);
+            const response = await api.get('/users');
+            if (response.status !== 200) {
+                message.error(response.statusText);
+            }
+            setUsers(response.data);
         }
         getUsers();
     }, []);
@@ -22,7 +25,10 @@ const UsersPage = (): JSX.Element => {
     };
 
     const onHandleDeleteModel = async (id: number) => {
-        await api.delete(`/users/${id}`);
+        const response = await api.delete(`/users/${id}`);
+        if (response.status !== 200) {
+            message.error(response.statusText);
+        }
     };
 
     return (

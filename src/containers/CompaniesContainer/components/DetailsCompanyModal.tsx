@@ -1,4 +1,4 @@
-import { Modal, Form, Input } from 'antd';
+import { Modal, Form, Input, message } from 'antd';
 import React, { useState } from 'react';
 import api from '../../../services/api';
 import ICompany from '../../../types/Company';
@@ -23,9 +23,12 @@ const DetailsCompanyModal = ({
     const onHandleOkModal = async () => {
         const { id, name } = form.getFieldsValue();
         setConfirmLoading(true);
-        await api.put(`/companies/${id}`, { name, id });
+        const response = await api.put(`/companies/${id}`, { name, id });
         setConfirmLoading(false);
         setShowSeeModal();
+        if (response.status !== 200) {
+            message.error(response.statusText);
+        }
     };
 
     const onFinishFailed = () => {

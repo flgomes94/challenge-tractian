@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Popconfirm, Progress, Space, Table, Tag } from 'antd';
+import { Button, message, Popconfirm, Progress, Space, Table, Tag } from 'antd';
 // eslint-disable-next-line import/no-duplicates
 import { formatRelative } from 'date-fns';
 // eslint-disable-next-line import/no-duplicates
@@ -29,7 +29,10 @@ const AssetsTable = ({
     };
 
     const onHandleDeleteModel = async (id: number) => {
-        await api.delete(`/assets/${id}`);
+        const response = await api.delete(`/assets/${id}`);
+        if (response.status !== 200) {
+            message.error(response.statusText);
+        }
     };
     const columns = [
         {

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Col } from 'antd';
+import { Col, message } from 'antd';
 import api from '../../services/api';
 
 import ICompany from '../../types/Company';
@@ -12,8 +12,11 @@ const CompaniesPage = (): JSX.Element => {
     const [showSeeModal, setShowSeeModal] = useState(false);
     useEffect(() => {
         async function getCompanies() {
-            const newCompanies = await api.get('/companies');
-            setCompanies(newCompanies.data);
+            const response = await api.get('/companies');
+            setCompanies(response.data);
+            if (response.status !== 200) {
+                message.error(response.statusText);
+            }
         }
         getCompanies();
     }, []);
@@ -23,7 +26,10 @@ const CompaniesPage = (): JSX.Element => {
     };
 
     const onHandleDeleteModel = async (id: number) => {
-        await api.delete(`/companies/${id}`);
+        const response = await api.delete(`/companies/${id}`);
+        if (response.status !== 200) {
+            message.error(response.statusText);
+        }
     };
 
     return (

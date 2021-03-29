@@ -1,4 +1,4 @@
-import { Modal, Form, Input, Select } from 'antd';
+import { Modal, Form, Input, Select, message } from 'antd';
 import React, { useEffect, useState } from 'react';
 import api from '../../../services/api';
 import ICompany from '../../../types/Company';
@@ -28,12 +28,18 @@ const DetailUserModal = ({
 
     useEffect(() => {
         async function getUnits() {
-            const newUnits = await api.get('/units');
-            setUnits(newUnits.data);
+            const response = await api.get('/units');
+            if (response.status !== 200) {
+                message.error(response.statusText);
+            }
+            setUnits(response.data);
         }
         async function getCompanies() {
-            const newCompanies = await api.get('/companies');
-            setCompanies(newCompanies.data);
+            const response = await api.get('/companies');
+            if (response.status !== 200) {
+                message.error(response.statusText);
+            }
+            setCompanies(response.data);
         }
         getUnits();
         getCompanies();
@@ -42,9 +48,17 @@ const DetailUserModal = ({
     const onHandleOkModal = async () => {
         const { id, name, email, companyId, unitId } = form.getFieldsValue();
         setConfirmLoading(true);
-        await api.put(`/users/${id}`, { name, email, companyId, unitId });
+        const response = await api.put(`/users/${id}`, {
+            name,
+            email,
+            companyId,
+            unitId,
+        });
         setConfirmLoading(false);
         setShowSeeModal();
+        if (response.status !== 200) {
+            message.error(response.statusText);
+        }
     };
 
     const onFinishFailed = () => {

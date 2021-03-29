@@ -1,4 +1,4 @@
-import { Row } from 'antd';
+import { message, Row } from 'antd';
 
 import React, { useEffect, useState } from 'react';
 
@@ -17,8 +17,11 @@ const AssetsPage: React.FC = () => {
 
     useEffect(() => {
         async function getAssets() {
-            const newAssets = await api.get('/assets');
-            setAssets(newAssets.data);
+            const response = await api.get('/assets');
+            if (response.status !== 200) {
+                message.error(response.statusText);
+            }
+            setAssets(response.data);
         }
         getAssets();
     }, []);

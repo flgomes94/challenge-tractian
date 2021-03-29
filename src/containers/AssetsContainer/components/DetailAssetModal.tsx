@@ -1,4 +1,4 @@
-import { Modal, Form, Image, Input, Select } from 'antd';
+import { Modal, Form, Image, Input, Select, message } from 'antd';
 import React, { useState, useEffect } from 'react';
 import api from '../../../services/api';
 import IAsset from '../../../types/Asset';
@@ -26,12 +26,20 @@ const DetailAssetModal = ({
 
     useEffect(() => {
         async function getUnits() {
-            const newUnits = await api.get('/units');
-            setUnits(newUnits.data);
+            const response = await api.get('/units');
+            if (response.status !== 200) {
+                message.error(response.statusText);
+                return;
+            }
+            setUnits(response.data);
         }
         async function getCompanies() {
-            const newCompanies = await api.get('/companies');
-            setCompanies(newCompanies.data);
+            const response = await api.get('/companies');
+            if (response.status !== 200) {
+                message.error(response.statusText);
+                return;
+            }
+            setCompanies(response.data);
         }
         getUnits();
         getCompanies();
@@ -40,8 +48,16 @@ const DetailAssetModal = ({
     const onHandleOkModal = async () => {
         const { id, name, model, companyId, unitId } = form.getFieldsValue();
         setConfirmLoading(true);
-        await api.put(`/assets/${id}`, { name, model, companyId, unitId });
+        const response = await api.put(`/assets/${id}`, {
+            name,
+            model,
+            companyId,
+            unitId,
+        });
         setConfirmLoading(false);
+        if (response.status !== 200) {
+            message.error(response.statusText);
+        }
         setShowSeeModal();
     };
 

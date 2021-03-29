@@ -1,4 +1,4 @@
-import { Modal, Form, Input, Select } from 'antd';
+import { Modal, Form, Input, Select, message } from 'antd';
 import React, { useEffect, useState } from 'react';
 import api from '../../../services/api';
 import ICompany from '../../../types/Company';
@@ -25,8 +25,11 @@ const DetailUnitModal = ({
 
     useEffect(() => {
         async function getCompanies() {
-            const newCompanies = await api.get('/companies');
-            setCompanies(newCompanies.data);
+            const response = await api.get('/companies');
+            if (response.status !== 200) {
+                message.error(response.statusText);
+            }
+            setCompanies(response.data);
         }
         getCompanies();
     }, []);
@@ -34,9 +37,12 @@ const DetailUnitModal = ({
     const onHandleOkModal = async () => {
         const { id, name, companyId } = form.getFieldsValue();
         setConfirmLoading(true);
-        await api.put(`/Units/${id}`, { name, companyId });
+        const response = await api.put(`/units/${id}`, { name, companyId });
         setConfirmLoading(false);
         setShowSeeModal();
+        if (response.status !== 200) {
+            message.error(response.statusText);
+        }
     };
 
     const onFinishFailed = () => {

@@ -6,7 +6,7 @@ import {
     ExperimentOutlined,
     AppstoreOutlined,
 } from '@ant-design/icons';
-import { BrowserRouter, Link, Route } from 'react-router-dom';
+import { BrowserRouter, Link, Route, useParams } from 'react-router-dom';
 import AssetsPage from './AssetsContainer';
 import UsersPage from './UsersContainer';
 import UnitsPage from './UnitsContainer';
@@ -26,7 +26,7 @@ const HomePage: React.FC = () => {
                     onCollapse={setCollapsed}
                     style={{ height: '100vh' }}
                 >
-                    <Menu defaultSelectedKeys={['1']} mode="inline">
+                    <Menu mode="inline">
                         <Menu.Item key="1" icon={<SettingOutlined />}>
                             Ativos
                             <Link to="/assets" />
